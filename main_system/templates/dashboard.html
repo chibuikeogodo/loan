@@ -1,0 +1,108 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> > Dashboard
+<div style="" class="section">
+    <br/>
+           <h1 style="color: black;" align="center">My Dashboard</h1>
+<br/><br/>
+<div class="container">
+  {%if user.account.activate == True%}
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Free fund Transfer</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'transfer'%}" class="btn btn-primary">Tranfer Funds</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">My transactions</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Transactions</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Request Loan</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'CreateBorrower'%}" class="btn btn-primary">Request Loan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Pledge Loan</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'newlender'%}" class="btn btn-primary">Grant Loan</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Lenders</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'lenders_list'%}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Borrowers List</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'loan_list'%}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">My Profile</h2>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="{%url 'lenders_list'%}" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+    </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Verification</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="{%url 'lenders_list'%}" class="btn btn-primary">Apply</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Support</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="" class="btn btn-primary">Contact</a>
+          </div>
+        </div>
+      </div>
+  </div>
+  {%else%}
+  <h3 align="center">Sorry, You're not active Yet! Wait to be activated</h3>
+  {%endif%}
+</div>
+</div>
+
+
+
+
+{%endblock%}

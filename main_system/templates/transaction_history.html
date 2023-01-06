@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+{%if user.is_authenticated%}`
+<h3>Transaction History</h3>
+{%for transfer in object_list%}
+ Tranferred {{transfer.Account.user}} to {{transfer.user}}
+
+{%endfor%}
+{%endif%}
+{%endblock%}

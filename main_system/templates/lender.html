@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+{%load static%}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> | Lenders
+<br/>
+<!--{%if user.account.balance %} Balance ₦{{user.account.balance|intcomma}} {%else%} Balance ₦0 {%endif%}<br/>-->
+    <!-- content start -->
+    <div class="container">
+                    {%if msg%}
+                        {{msg}}
+                    {%endif%}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wrapper-content bg-white pinside40">
+                     <div class="card">
+                            <div class="card-head">
+                               <h2 align="center">Lender's List</h2>
+                            </div>
+                        </div>
+                    <div class="row">
+
+                        {%for lenders in lenders %}
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="lender-listing">
+                                <!-- lender listing -->
+                                <div class="lender-head">
+                                    {{lenders.user}} want to loan out:
+                                </div>
+                                <div class="lender-rate-box">
+                                    <div class="lender-ads-rate">
+                                        <small>Amount</small>
+                                        <h3 class="lender-rate-value">₦{{lenders.amount|intcomma}}</h3>
+                                    </div>
+                                    <div class="lender-compare-rate">
+                                        <small>Total Payback</small>
+                                        <h3 class="lender-rate-value">₦{{lenders.total_all|intcomma}}</h3>
+                                    </div>
+                                </div>
+                                <div class="lender-feature-list">
+                                    <ul class="listnone bullet bullet-check-circle-default">
+                                        <li>Time: {%if duration == 1%}{{lenders.duration}}Month {%else%}{{lenders.duration}}Months{%endif%}</li>
+                                        <li>Rate: {{lenders.percentage}}% </li>
+                                        <li>Created: {{lenders.date_created}}</li>
+
+                                    </ul>
+                                </div>
+                                <div class="lender-actions">
+                                    {%if request.user == lenders.user%}
+                                    <a href="{%url 'LenderDetails' lenders.id%}" class="btn btn-default btn-block">View</a>
+                                    {%else%}
+                                    <a href="{%url 'LenderDetails' lenders.id%}" class="btn btn-default btn-block">Apply</a>
+                                    {%endif%}
+                                    {%if request.user == lenders.user%} <a href="{%url 'DeleteLender' lenders.pk%}">Delete</a> | <a href="">Update</a> {%endif%}
+                                </div>
+                            </div>
+                            <!-- /.lender listing -->
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content end -->
+
+{%endblock%}

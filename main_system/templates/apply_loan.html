@@ -1,0 +1,16 @@
+{%load static%}
+<div class="container">
+    {%if user.is_authenticated%}
+    <form action="{%url 'apply_section' lenders.id%}"  method="POST">
+        {%csrf_token%}
+        {%if apply %}
+        <button type="submit", name="apply_loan", value="{{lenders.id}}",
+                class="">Cancel</button>
+        {%else%}
+        <button type="submit", name="apply_loan", value="{{lenders.id}}">Apply</button>
+        {%endif%}
+    {%endif%}
+
+    </form><br/>
+
+</div>

@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+
+
+Welcome {{user.username}}<br/>
+{%if balance.balance %} Balance ₦{{balance.balance|intcomma}} {%else%} Balance ₦0 {%endif%}<br/>
+<a href="/logout/">Sign Out</a> | <a href="/lenders/">Active Lenders</a> | <a href="/borrowers/">Loan Requests</a> |
+{%if user.balance%}<a href="/create_lender/">Pledge Loan</a>| <a href="">Fund Wallet</a>{%else%}<a href="">Fund Wallet</a>{%endif%}  | <a href="/borrowering/">Request Loan</a>
+
+{%endblock%}

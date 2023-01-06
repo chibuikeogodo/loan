@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+{%load static%}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> > Borrowers
+<br/>
+    <div class="container">
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wrapper-content bg-white pinside40">
+                     <div class="card">
+                            <div class="card-head">
+                               <h2 align="center">Loan Requests</h2>
+                            </div>
+                        </div>
+                    <form class="form-inline from-control">
+                              <div class="form-group mx-sm-3 mb-46">
+                                <input class="form-control" type="text" placeholder="Type amount to search" >
+                              </div>
+                              <button type="submit" class="btn btn-primary mb-2">search</button>
+                            </form>
+                    <br/>
+                    <div class="row">
+
+                        {%for borrowers in object_list %}
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="lender-listing">
+                                <!-- lender listing -->
+                                <div class="lender-head">
+                                    By: {{borrowers.user}}
+                                </div>
+                                <div class="lender-rate-box">
+                                    <div class="lender-ads-rate">
+                                        <small>Amount</small>
+                                        <h3 class="lender-rate-value">₦{{borrowers.amount|intcomma}}</h3>
+                                    </div>
+                                    <div class="lender-compare-rate">
+                                        <small>Total Payback</small>
+                                        <h3 class="lender-rate-value">₦{{borrowers.total|intcomma}}</h3>
+                                    </div>
+                                </div>
+                                <div class="lender-feature-list">
+                                    <ul class="listnone bullet bullet-check-circle-default">
+                                        <li>Time: {%if duration == 1%}{{borrowers.duration}}Month {%else%}{{borrowers.duration}}Months{%endif%}</li>
+                                        <li>Rate: {{borrowers.percentage}}% </li>
+                                        <li>Created: {{borrowers.date_created}}</li>
+                                        {%if request.user == borrowers.user%}
+                                        <a href="">Edit</a> | <a href="{%url 'DeleteBorrowers'%}">Delete</a>
+                                        {%endif%}
+                                    </ul>
+                                </div>
+                                <div class="lender-actions">
+                                    <a href="#" class="btn btn-primary btn-block">Apply now</a>
+
+                                </div>
+                            </div>
+                            <!-- /.lender listing -->
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content end -->
+{%endblock%}

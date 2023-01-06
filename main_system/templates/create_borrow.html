@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> > Request Loan
+<div style="" class="section">
+    <br/>
+           <h1 style="color: black;" align="center">Request Loan</h1>
+<br/><br/>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+        <br/>
+        <button class="btn btn-primary btn-lg btn-block">Submit Request</button>
+    </form>
+</div>
+</div>
+
+
+<br/><br/>
+
+{%endblock%}

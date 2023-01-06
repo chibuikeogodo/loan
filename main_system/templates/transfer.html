@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> > Transfer
+<div class="container">
+    {%if msg%}
+        {{msg}}
+    {%endif%}
+    <div align="center">
+        <div class="card-header"><h2>Direct Fund Tranfer</h2></div>
+        <div class="card">
+            <br/>
+            <form method="POST">
+                {%csrf_token%}
+                Username:<br>
+                <input type="text" name="username" placeholder="username"><br/>
+                        Amount:<br>
+                <input type="text" name="amount" placeholder="amount"><br/><br/>
+                <button class="btn btn-primary">Transfer</button>
+            </form>
+            <br/>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}

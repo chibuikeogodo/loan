@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<br/>
+<div class="container">
+    <div class="card-header">
+        <h1 align="center">Meet the Team</h1>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col sm-6">
+            <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{%static 'images/success.jpg'%}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+              <h2 class="card-title"><b>Meet Okoro Chika Success</b></h2>
+            <p class="card-text">Okoro chika success is a final year student of Federal University of techology under the
+            department of information management. She is a certified Data analyst, graphic designer and a problem analyst. </p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+        </div>
+        <div class="col sm-6">
+            <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="{%static 'images/chibuike.jpg'%}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                  <h2 class="card-title"><b>Meet Chibuike ogodo</b></h2>
+                <p class="card-text">
+                    Chibuike ogodo is a final year student of Federal University of techology Owerri, very obessed with data and numbers.
+                    He is a programmer and lover of python who has so much interest in Data analytics.
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+    </div>
+        </div>
+    </div>
+
+
+</div>
+{%endblock%}

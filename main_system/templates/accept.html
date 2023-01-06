@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+{%if user.is_authenticated%}`
+<form>
+    {%csrf_token%}
+    {{form.as_p}}
+    <button class="btn btn-success">Submit</button>
+</form>
+{%else%}
+<a href="{%url 'login' %}">Login</a> | <a href="register">Register</a>
+{%endif%}
+{%endblock%}

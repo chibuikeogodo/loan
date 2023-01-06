@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> > Transfer
+<div class="container">
+    <div align="center">
+        <div class="card-header"><h2>Direct Fund Tranfer</h2></div>
+        <div class="card">
+            <br/>
+
+            {%if msg%}
+                <div class="alert alert-danger" role="alert">
+                  {{msg}}
+                </div>
+            {%endif%}
+
+            <form method="POST">
+                {%csrf_token%}
+                Amount:<br>
+                <input type="text" name="amount" placeholder="amount"><br/><br/>
+                conditions:<br>
+                <input type="text" name="conditions" placeholder="conditions"><br/>
+                percentage:<br>
+                <input type="number" name="percentage" placeholder="percentage"><br/><br/>
+                duration:<br>
+                <input type="number" name="duration" placeholder="duration"><br/><br/>
+                <button class="btn btn-primary">Create</button>
+            </form>
+            <br/>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}

@@ -1,0 +1,70 @@
+{%if request.user == lenders.applyLoan.name%}
+
+this loan is not avaliable
+
+{%else%}
+    <div class="container">
+        {%if lenders.user == request.user%}
+    {%else%}
+            {%if request.user in lenders.app%}
+            <div class="container">
+                <h2>Sorry, You have already applied! Wait for confirmation</h2>
+            </div>
+            {%else%}
+                {% if user.is_authenticated%}
+                    <div class="container">
+                     <form method="post">
+                        {%csrf_token%}
+                        {{apply_form.as_p}}
+                        <br/>
+                        <button class="btn btn-info btn-sm">Apply For Loan</button>
+                    </form>
+                    </div>
+                {%else%}
+                    <div class="container">
+                        Please <a href="{%url 'login' %}">login</a> to comment on this post
+                    </div>
+                {%endif%}
+        {%endif%}
+{%endif%}
+<br/>
+</div>
+{%endif%}
+{%if request.user == lenders.user%}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 align="center">Applications</h3>
+        </div>
+    </div>
+    {%if not lenders.loans.all%}
+        <h2>No loan request Yet</h2>
+    {%else%}
+          {%for apply in lenders.loans.all%}
+            {%if apply.is_parent%}
+                <div class="container">
+                    <table class="table table-striped table-dark">
+                      <thead>
+                        <tr>
+                          <th scope="col">Username</th>
+                          <th scope="col">Reason(s)</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{apply.name}}</td>
+                          <td>{{apply.comment}}</td>
+                          <td>
+                              <button type="button" class="btn btn-success">Approve</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            {%endif%}
+        {%endfor%}
+    {%endif%}
+</div>
+{%endif%}
+

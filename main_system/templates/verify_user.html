@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static %}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> > Dashboard
+<div style="" class="section">
+    <br/>
+           <h1 style="color: black;" align="center">My Dashboard</h1>
+<br/><br/>
+<div class="container">
+  {%if user.account.activate.is_True%}
+  djfkfjkf
+  {%else%}
+    <h3>Hello, You're not active yet! Please wait for you to be activated</h3>
+  {%endif%}
+
+</div>
+</div>
+
+
+
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<form action="" method="POST">
+    {%csrf_token%}
+    {%if error%}
+     {{ error }}
+    {%endif%}
+    {%if msg%}
+    {{msg}}
+
+    {%endif%}
+    <br/>
+
+    Username:
+    <input type="text" name="username"><br/><br/>
+    Password:
+    <input type="password" name="password"><br>
+    <input type="submit" value="Login">
+</form>
+<small>Don't have account <a href="">Register</a> </small>
+{%endblock%}
