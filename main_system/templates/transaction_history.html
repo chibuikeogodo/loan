@@ -1,12 +1,31 @@
 {%extends 'base.html'%}
-{%load static %}
-{% load humanize %}
 {%block content%}
-{%if user.is_authenticated%}`
-<h3>Transaction History</h3>
-{%for transfer in object_list%}
- Tranferred {{transfer.Account.user}} to {{transfer.user}}
+<div class="container">
+    <h1 align="center">Transaction</h1>
+    <div class="row">
 
-{%endfor%}
-{%endif%}
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Lend Funds Transactions</h2>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="{%url 'My_post' %}" class="btn btn-primary">Tranfer Funds</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Borrowered Transactions</h2>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="{%url 'transfer'%}" class="btn btn-primary">Tranfer Funds</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+
 {%endblock%}

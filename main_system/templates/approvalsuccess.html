@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{% load humanize %}
+{%block content%}
+
+<div class="container">
+    <h1 align="center">YOU HAVE SUCCESSFULLY APPROVED THIS LOAN, YOUR CURRENT BALANCE NOW IS <b>₦{{user.account.balance|intcomma}}</b>. THANK YOU</h1>
+
+    <p align="center">Go back to your <a href="{%url 'dashboard'%}">Dashboard</a> </p>
+</div>
+
+
+{%endblock%}

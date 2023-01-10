@@ -2,13 +2,25 @@ from django.db import models
 import random
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
+from PIL import Image
+
+
 
 
 class Account(models.Model):
+    levels = (
+        ('Level 1', 'Level 1'),
+        ('Level 2', 'Level 2'),
+        ('Level 3', 'Level 3'),
+        ('Level 4', 'Level 4'),
+        ('Level 5', 'Level 5'),
+    )
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, default=None)
     apply = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user2', null=True, blank=True, default=None)
     balance = models.IntegerField(default=0, null=True, blank=True)
     activate = models.BooleanField(default=False)
+    Level = models.CharField(max_length=30, blank=False, null=False, choices=levels)
     amount = models.DecimalField(max_digits=12, decimal_places=2, default=0, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     conditions = models.TextField(null=True, blank=True, default=None)
@@ -26,7 +38,7 @@ class Lender(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     date_created = models.DateTimeField(auto_now_add=True)
-    conditions = models.TextField()
+    conditions = models.TextField(blank=True, null=True)
     Lender_approval = models.BooleanField(default=False)
     Borrower_approval = models.BooleanField(default=False)
     percentage = models.IntegerField(default=0)
@@ -47,6 +59,9 @@ class applyLoan(models.Model):
     post = models.ForeignKey(Lender, related_name='loans', on_delete=models.CASCADE)
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
+    file_1 = models.ImageField(null=True, blank=True, default=None)
+    file_2 = models.ImageField(null=True, blank=True, default=None)
+    file_3 = models.ImageField(null=True, blank=True, default=None)
     date = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, related_name='+')
 
@@ -105,3 +120,19 @@ class Tranfer(models.Model):
     def __str__(self):
         return f"{self.amount} transfered to {self.recieving_user}"
 
+
+class Verificaton(models.Model):
+    levels = (
+        ('Level 1', 'Level 1'),
+        ('Level 2', 'Level 2'),
+        ('Level 3', 'Level 3'),
+        ('Level 4', 'Level 4'),
+        ('Level 5', 'Level 5'),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, )
+    document = models.CharField(max_length=50, null=False, blank=False)
+    Level = models.CharField(max_length=30, blank=False, null=False, choices=levels)
+
+    def __str__(self):
+
+        return f"{self.user} want to upgrade to {self.Level}"

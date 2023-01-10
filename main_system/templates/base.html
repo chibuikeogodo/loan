@@ -110,7 +110,7 @@
         <div class="container">
             <h3 align="right">
             {%if user.is_authenticated%}
-             Hi,{{user.username}}<br/>
+                Hi,{{user.username}} | <b>{{user.account.Level}}</b><br/>
                 {%if user.account.balance %}<b style="color: green;">Balance: ₦{{user.account.balance|intcomma}}.00</b> {%else%} <b style="color: red;"> Balance: ₦0.00 {%endif%}</b> | <a href="">Add Fund</a> | <a href="">Withdraw</a>
             {%endif%}
         </h3>

@@ -1,0 +1,94 @@
+{%extends 'base.html'%}
+{%load static%}
+{% load humanize %}
+{%block content%}
+<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> | <a href="{%url 'lenders_list'%}">Lender List</a> > Details
+<br/><br/>
+<!--{%if user.account.balance %} Balance ₦{{user.account.balance|intcomma}} {%else%} Balance ₦0 {%endif%}<br/>-->
+    <!-- content start -->
+
+    <div class="container">
+        <div class="card">
+            <div class="card header">
+                <h2 align="center">Application Details</h2>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col">
+                <div class="col-md">
+                    <div class="card text-center text-white md mb-3" id="total-orders">
+                        <div class="card-header">
+                            <h5 class="card-title">Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title"><b>{{loans.name}}</b></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white md mb-3" id="orders-delivered">
+                    <div class="card-header">
+                        <h5 class="card-title">Date</h5>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title"><b>{{loans.date}}</b></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 align="center">Comment</h5>
+            </div>
+            <div class="card-body">
+                <h3>{{loans.comment}}</h3>
+            </div>
+        </div>
+        <div class="container">
+            <h2 align="center">Collaterals</h2>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h2 align="center">Please Make sure to Verify the collaterals to make sure they meet your test before
+                    going back to Approve the Loan. You can download the files to view them well.
+              <button type="button" class="close"  data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="card-deck">
+            {%if loans.file_1 %}
+              <div class="card">
+                <img src="{{loans.file_1.url}}" class="card-img-top" alt="...">
+              </div>
+            {%endif%}
+            {%if loans.file_2 %}
+              <div class="card">
+                <img src="{{loans.file_2.url}}" class="card-img-top" alt="...">
+
+              </div>
+            {%endif%}
+            {%if loans.file_3 %}
+              <div class="card">
+                <img src="{{loans.file_3.url}}" class="card-img-top" alt="...">
+
+              </div>
+            {%endif%}
+            </div>
+        </div>
+    </div>
+<br/>
+
+
+
+<!--This ends the code that shows the applications to lender-->
+<br/><br/>
+{%endblock%}

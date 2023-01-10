@@ -52,7 +52,8 @@
                                     {%else%}
                                     <a href="{%url 'LenderDetails' lenders.id%}" class="btn btn-default btn-block">Apply</a>
                                     {%endif%}
-                                    {%if request.user == lenders.user%} <a href="{%url 'DeleteLender' lenders.pk%}">Delete</a> | <a href="">Update</a> {%endif%}
+                                    {%if request.user == lenders.user%} <a href="{%url 'DeleteLender' lenders.pk%}">Delete</a>
+                                    | <a href="{%url 'update' lenders.pk%}">Update</a> {%endif%}
                                 </div>
                             </div>
                             <!-- /.lender listing -->

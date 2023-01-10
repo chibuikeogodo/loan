@@ -1,21 +1,8 @@
-{%extends 'base.html'%}
-{%load static%}
-{% load humanize %}
-{%block content%}
-<a href="/">Back to Home</a> | <a href="{%url 'dashboard'%}">Dashboard</a> | <a href="{%url 'lenders_list'%}">Lender List</a> >
-<br/>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            Amount to Borrow: {{lenders.user}}<br/>
-            Borrower: {{receiverUser}}<br/>
-            borrower's Comment: {{loan.comment}}<br/>
-            Applied on: {{loan.date}}<br/>
-            <a href=""><button type="button" class="btn btn-primary">Approve</button></a>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-</div>
+<form method="POST" action="{%url 'ApproveLoan'%}">
+    {%csrf_token%}
 
-{%endblock%}
+    <input type="hidden" name="borrower" value="{{apply.name}}">
+
+    <input type="hidden" name="amount" value="{{lenders.amount|stringformat:".0f"}}">
+    <button class="btn btn-primary">Approve</button>
+</form>
